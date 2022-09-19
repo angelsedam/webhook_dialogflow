@@ -78,7 +78,7 @@ def webhook():
                 },
                 {
                     'text': {
-                        'text':recetario["recetas"][0]['ingredientes']
+                        'text':', '.join(recetario["recetas"][0]['ingredientes'])
                     }
                 },
                 {
@@ -88,7 +88,7 @@ def webhook():
                 },
                 {
                     'text': {
-                        'text': recetario["recetas"][0]['instrucciones']
+                        'text':', '.join(recetario["recetas"][0]['instrucciones'])
                     }
                 }
             ]})
