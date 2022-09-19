@@ -63,7 +63,36 @@ def webhook():
     print(request.json)
     peticion = request.json
     if peticion['queryResult']['intent']['displayName'] == 'Receta':
-        return jsonify({'fulfillmentText':recetario['recetas'][0]['nombre']})
+        return jsonify({
+            'fulfillmentText':recetario['recetas'][0]['nombre'],
+            'fulfillmentMessages':[
+                {
+                    'text':{
+                        'text':[recetario['recetas'][0]['nombre']]
+                    }
+                },
+                {
+                    'text': {
+                        'text': ['Ingredientes: ']
+                    }
+                },
+                {
+                    'text': {
+                        'text':recetario["recetas"][0]['ingredientes']
+                    }
+                },
+                {
+                    'text': {
+                        'text': ['Pasos a seguir: ']
+                    }
+                },
+                {
+                    'text': {
+                        'text': recetario["recetas"][0]['instrucciones']
+                    }
+                }
+            ]})
+
     return 'HOLA'
 
 if __name__ =='__main__':
